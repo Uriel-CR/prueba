@@ -1,26 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presentacion</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <header>
-    <h1>Presentacion</h1>
-  </header>
-  <body>
-    <main>
-      <h1>Pagina de presentacion para capacitacion en DENEDIG</h1>
-    </main>
-    <img src="img/535277.png" alt="Imagen de fondo" />
-    <p>Nombre: Uriel</p>
-    <p>Apellido: Cordoba</p>
-    <p>Edad: 21</p>
-    <p>Fecha de nacimiento: 16/12/2003</p>
-    <p>Correo: urtrax07@gmail.com</p>
-    <footer>
-      <p>Todos los derechos reservados</p>
-    </footer>
-  </body>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Básica</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="calculadora">
+    <h1>Calculadora Básica</h1>
+    <input type="number" id="numero1" placeholder="Ingresa el primer número">
+    <input type="number" id="numero2" placeholder="Ingresa el segundo número">
+    <div>
+      <button onclick="calcular('sumar')">Sumar</button>
+      <button onclick="calcular('restar')">Restar</button>
+      <button onclick="calcular('multiplicar')">Multiplicar</button>
+      <button onclick="calcular('dividir')">Dividir</button>
+    </div>
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    // Funciones de la calculadora
+    function sumar(a, b) {
+      return a + b;
+    }
+
+    function restar(a, b) {
+      return a - b;
+    }
+
+    function multiplicar(a, b) {
+      return a * b;
+    }
+
+    function dividir(a, b) {
+      if (b === 0) {
+        return "Error: No se puede dividir por cero.";
+      }
+      return a / b;
+    }
+
+    // Función para manejar el cálculo
+    function calcular(operacion) {
+      const numero1 = parseFloat(document.getElementById("numero1").value);
+      const numero2 = parseFloat(document.getElementById("numero2").value);
+      let resultado;
+
+      if (isNaN(numero1) || isNaN(numero2)) {
+        resultado = "Por favor, ingresa números válidos.";
+      } else {
+        switch (operacion) {
+          case "sumar":
+            resultado = sumar(numero1, numero2);
+            break;
+          case "restar":
+            resultado = restar(numero1, numero2);
+            break;
+          case "multiplicar":
+            resultado = multiplicar(numero1, numero2);
+            break;
+          case "dividir":
+            resultado = dividir(numero1, numero2);
+            break;
+          default:
+            resultado = "Operación no válida.";
+        }
+      }
+
+      document.getElementById("resultado").textContent = "Resultado: " + resultado;
+    }
+  </script>
+</body>
+
 </html>
